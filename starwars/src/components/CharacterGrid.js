@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { Card} from 'semantic-ui-react'
+import CharacterCard from './CharacterCard';
 
-const CharacterCard = ({character}) => {
+
+const CharacterGrid = ({charactersList}) => {
 
     // const [planet, setPlanet] = useState('')
 
@@ -19,16 +20,16 @@ const CharacterCard = ({character}) => {
     // }, []);
 
     return(
-        <div className='characterCards'>
-            <Card
-                className='characterCard'
-                header={character.name}
-                meta={`Gender: ${character.gender}`}
-                description={`Weight: ${character.mass}`}
-                // extra={extra}
-            />
+        <div className='characterGrid'>
+            {
+                charactersList.map((character, i) =>
+                    <CharacterCard
+                        key = {i}
+                        character = {character}
+                    />
+            )}
         </div>
     )
 }
 
-export default CharacterCard;
+export default CharacterGrid;
